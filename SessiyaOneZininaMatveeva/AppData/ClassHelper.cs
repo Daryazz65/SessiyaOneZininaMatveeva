@@ -24,6 +24,5 @@ namespace SessiyaOneZininaMatveeva.AppData
         //        }
         //    }
         //}
-        //fghghghgdf
     }
 }
