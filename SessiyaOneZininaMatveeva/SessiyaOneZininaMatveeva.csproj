@@ -63,53 +63,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AppData\ClassHelper.cs" />
-    <Compile Include="Model\Activity.cs">
-      <DependentUpon>SessiaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\City.cs">
-      <DependentUpon>SessiaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Country.cs">
-      <DependentUpon>SessiaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Direction.cs">
-      <DependentUpon>SessiaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Event.cs">
-      <DependentUpon>SessiaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\EventParticipant.cs">
-      <DependentUpon>SessiaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Gender.cs">
-      <DependentUpon>SessiaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Jury.cs">
-      <DependentUpon>SessiaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Moderator.cs">
-      <DependentUpon>SessiaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Organizer.cs">
-      <DependentUpon>SessiaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Participant.cs">
-      <DependentUpon>SessiaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\SessiaModel.Context.cs">
+    <Compile Include="Model\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SessiaModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\SessiaModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SessiaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\SessiaModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SessiaModel.edmx</DependentUpon>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\StartWindow.xaml.cs">
       <DependentUpon>StartWindow.xaml</DependentUpon>
@@ -141,12 +98,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Model\SessiaModel.edmx">
+    <EntityDeploy Include="Model\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SessiaModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\SessiaModel.edmx.diagram">
-      <DependentUpon>SessiaModel.edmx</DependentUpon>
+    <None Include="Model\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -161,18 +118,6 @@
     <Folder Include="Resource\" />
     <Folder Include="Styles\" />
     <Folder Include="View\Pages\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Model\SessiaModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>SessiaModel.Context.cs</LastGenOutput>
-      <DependentUpon>SessiaModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Model\SessiaModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SessiaModel.edmx</DependentUpon>
-      <LastGenOutput>SessiaModel.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

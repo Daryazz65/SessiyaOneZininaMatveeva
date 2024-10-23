@@ -426,10 +426,10 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdEvent" Type="Int32" Nullable="false" />
-          <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateStart" Type="DateTime" Nullable="false" />
           <Property Name="Activ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Day" Type="Int32" Nullable="false" />
-          <Property Name="TimeStart" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="TimeStart" Type="Time" Nullable="false" />
           <Property Name="IdModerator" Type="Int32" Nullable="false" />
           <Property Name="IdWinner" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Event" Relationship="Self.FK_Activity_Event" FromRole="Activity" ToRole="Event" />
@@ -472,7 +472,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
           <Property Name="Days" Type="Int32" Nullable="false" />
           <Property Name="CityId" Type="Int32" Nullable="false" />
           <Property Name="OrganizerId" Type="Int32" />
@@ -508,7 +508,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" />
           <Property Name="CountryId" Type="Int32" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DirectionId" Type="Int32" Nullable="false" />
@@ -527,7 +527,7 @@
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="GenderId" Type="Int32" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" />
           <Property Name="CountryId" Type="Int32" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DirectionId" Type="Int32" Nullable="false" />
@@ -549,7 +549,7 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" />
           <Property Name="CountryId" Type="Int32" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
@@ -568,7 +568,7 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" />
           <Property Name="CountryId" Type="Int32" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
@@ -783,7 +783,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="user25Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="user25Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Activity" EntityType="Self.Activity" />
           <EntitySet Name="City" EntityType="Self.City" />
           <EntitySet Name="Country" EntityType="Self.Country" />
@@ -869,7 +869,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище user25ModelContainer" CdmEntityContainer="user25Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище user25ModelContainer" CdmEntityContainer="user25Entities1">
           <EntitySetMapping Name="Activity">
             <EntityTypeMapping TypeName="user25Model.Activity">
               <MappingFragment StoreEntitySet="Activity">
@@ -1023,7 +1023,6 @@
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="true" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
