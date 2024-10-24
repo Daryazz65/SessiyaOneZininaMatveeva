@@ -132,11 +132,167 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resource\" />
     <Folder Include="View\Pages\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Events\1.jpeg" />
+    <Resource Include="Resource\Events\10.jpg" />
+    <Resource Include="Resource\Events\11.jpg" />
+    <Resource Include="Resource\Events\12.jpg" />
+    <Resource Include="Resource\Events\13.jpg" />
+    <Resource Include="Resource\Events\14.png" />
+    <Resource Include="Resource\Events\15.jpg" />
+    <Resource Include="Resource\Events\16.jpg" />
+    <Resource Include="Resource\Events\17.jpg" />
+    <Resource Include="Resource\Events\18.jpeg" />
+    <Resource Include="Resource\Events\19.jpg" />
+    <Resource Include="Resource\Events\2.jpeg" />
+    <Resource Include="Resource\Events\20.jpg" />
+    <Resource Include="Resource\Events\3.jpeg" />
+    <Resource Include="Resource\Events\4.jpeg" />
+    <Resource Include="Resource\Events\5.png" />
+    <Resource Include="Resource\Events\6.jpg" />
+    <Resource Include="Resource\Events\7.jpg" />
+    <Resource Include="Resource\Events\8.jpeg" />
+    <Resource Include="Resource\Events\9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Jury\foto1.jpg" />
+    <Resource Include="Resource\Jury\foto10.jpg" />
+    <Resource Include="Resource\Jury\foto11.jpg" />
+    <Resource Include="Resource\Jury\foto12.jpg" />
+    <Resource Include="Resource\Jury\foto13.jpg" />
+    <Resource Include="Resource\Jury\foto14.jpg" />
+    <Resource Include="Resource\Jury\foto15.jpg" />
+    <Resource Include="Resource\Jury\foto16.jpg" />
+    <Resource Include="Resource\Jury\foto17.jpg" />
+    <Resource Include="Resource\Jury\foto18.jpg" />
+    <Resource Include="Resource\Jury\foto19.jpg" />
+    <Resource Include="Resource\Jury\foto2.jpg" />
+    <Resource Include="Resource\Jury\foto20.jpg" />
+    <Resource Include="Resource\Jury\foto21.jpg" />
+    <Resource Include="Resource\Jury\foto22.jpg" />
+    <Resource Include="Resource\Jury\foto23.jpg" />
+    <Resource Include="Resource\Jury\foto24.jpg" />
+    <Resource Include="Resource\Jury\foto25.jpg" />
+    <Resource Include="Resource\Jury\foto26.jpg" />
+    <Resource Include="Resource\Jury\foto27.jpg" />
+    <Resource Include="Resource\Jury\foto28.jpg" />
+    <Resource Include="Resource\Jury\foto29.jpg" />
+    <Resource Include="Resource\Jury\foto3.jpg" />
+    <Resource Include="Resource\Jury\foto30.jpg" />
+    <Resource Include="Resource\Jury\foto4.jpg" />
+    <Resource Include="Resource\Jury\foto5.jpg" />
+    <Resource Include="Resource\Jury\foto6.jpg" />
+    <Resource Include="Resource\Jury\foto7.jpg" />
+    <Resource Include="Resource\Jury\foto8.jpg" />
+    <Resource Include="Resource\Jury\foto9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Moderators\foto10.jpg" />
+    <Resource Include="Resource\Moderators\foto11.jpg" />
+    <Resource Include="Resource\Moderators\foto12.jpg" />
+    <Resource Include="Resource\Moderators\foto13.jpg" />
+    <Resource Include="Resource\Moderators\foto14.jpg" />
+    <Resource Include="Resource\Moderators\foto15.jpg" />
+    <Resource Include="Resource\Moderators\foto16.jpg" />
+    <Resource Include="Resource\Moderators\foto17.jpg" />
+    <Resource Include="Resource\Moderators\foto18.jpg" />
+    <Resource Include="Resource\Moderators\foto19.jpg" />
+    <Resource Include="Resource\Moderators\foto20.jpg" />
+    <Resource Include="Resource\Moderators\foto21.jpg" />
+    <Resource Include="Resource\Moderators\foto22.jpg" />
+    <Resource Include="Resource\Moderators\foto23.jpg" />
+    <Resource Include="Resource\Moderators\foto24.jpg" />
+    <Resource Include="Resource\Moderators\foto25.jpg" />
+    <Resource Include="Resource\Moderators\foto26.jpg" />
+    <Resource Include="Resource\Moderators\foto27.jpg" />
+    <Resource Include="Resource\Moderators\foto28.jpg" />
+    <Resource Include="Resource\Moderators\foto29.jpg" />
+    <Resource Include="Resource\Moderators\foto8.jpg" />
+    <Resource Include="Resource\Moderators\foto9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Organiezers\foto1.jpg" />
+    <Resource Include="Resource\Organiezers\foto2.jpg" />
+    <Resource Include="Resource\Organiezers\foto3.jpg" />
+    <Resource Include="Resource\Organiezers\foto4.jpg" />
+    <Resource Include="Resource\Organiezers\foto5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Participals\foto1.jpg" />
+    <Resource Include="Resource\Participals\foto10.jpg" />
+    <Resource Include="Resource\Participals\foto11.jpg" />
+    <Resource Include="Resource\Participals\foto12.jpg" />
+    <Resource Include="Resource\Participals\foto13.jpg" />
+    <Resource Include="Resource\Participals\foto14.jpg" />
+    <Resource Include="Resource\Participals\foto15.jpg" />
+    <Resource Include="Resource\Participals\foto16.jpg" />
+    <Resource Include="Resource\Participals\foto17.jpg" />
+    <Resource Include="Resource\Participals\foto18.jpg" />
+    <Resource Include="Resource\Participals\foto19.jpg" />
+    <Resource Include="Resource\Participals\foto2.jpg" />
+    <Resource Include="Resource\Participals\foto20.jpg" />
+    <Resource Include="Resource\Participals\foto21.jpg" />
+    <Resource Include="Resource\Participals\foto22.jpg" />
+    <Resource Include="Resource\Participals\foto23.jpg" />
+    <Resource Include="Resource\Participals\foto24.jpg" />
+    <Resource Include="Resource\Participals\foto25.jpg" />
+    <Resource Include="Resource\Participals\foto26.jpg" />
+    <Resource Include="Resource\Participals\foto27.jpg" />
+    <Resource Include="Resource\Participals\foto28.jpg" />
+    <Resource Include="Resource\Participals\foto29.jpg" />
+    <Resource Include="Resource\Participals\foto3.jpg" />
+    <Resource Include="Resource\Participals\foto30.jpg" />
+    <Resource Include="Resource\Participals\foto31.jpg" />
+    <Resource Include="Resource\Participals\foto32.jpg" />
+    <Resource Include="Resource\Participals\foto33.jpg" />
+    <Resource Include="Resource\Participals\foto34.jpg" />
+    <Resource Include="Resource\Participals\foto35.jpg" />
+    <Resource Include="Resource\Participals\foto36.jpg" />
+    <Resource Include="Resource\Participals\foto37.jpg" />
+    <Resource Include="Resource\Participals\foto38.jpg" />
+    <Resource Include="Resource\Participals\foto39.jpg" />
+    <Resource Include="Resource\Participals\foto4.jpg" />
+    <Resource Include="Resource\Participals\foto40.jpg" />
+    <Resource Include="Resource\Participals\foto41.jpg" />
+    <Resource Include="Resource\Participals\foto42.jpg" />
+    <Resource Include="Resource\Participals\foto43.jpg" />
+    <Resource Include="Resource\Participals\foto44.jpg" />
+    <Resource Include="Resource\Participals\foto45.jpg" />
+    <Resource Include="Resource\Participals\foto46.jpg" />
+    <Resource Include="Resource\Participals\foto47.jpg" />
+    <Resource Include="Resource\Participals\foto48.jpg" />
+    <Resource Include="Resource\Participals\foto49.jpg" />
+    <Resource Include="Resource\Participals\foto5.jpg" />
+    <Resource Include="Resource\Participals\foto50.jpg" />
+    <Resource Include="Resource\Participals\foto51.jpg" />
+    <Resource Include="Resource\Participals\foto52.jpg" />
+    <Resource Include="Resource\Participals\foto53.jpg" />
+    <Resource Include="Resource\Participals\foto54.jpg" />
+    <Resource Include="Resource\Participals\foto55.jpg" />
+    <Resource Include="Resource\Participals\foto56.jpg" />
+    <Resource Include="Resource\Participals\foto57.jpg" />
+    <Resource Include="Resource\Participals\foto58.jpg" />
+    <Resource Include="Resource\Participals\foto59.jpg" />
+    <Resource Include="Resource\Participals\foto6.jpg" />
+    <Resource Include="Resource\Participals\foto60.jpg" />
+    <Resource Include="Resource\Participals\foto61.jpg" />
+    <Resource Include="Resource\Participals\foto62.jpg" />
+    <Resource Include="Resource\Participals\foto63.jpg" />
+    <Resource Include="Resource\Participals\foto64.jpg" />
+    <Resource Include="Resource\Participals\foto65.jpg" />
+    <Resource Include="Resource\Participals\foto66.jpg" />
+    <Resource Include="Resource\Participals\foto67.jpg" />
+    <Resource Include="Resource\Participals\foto68.jpg" />
+    <Resource Include="Resource\Participals\foto69.jpg" />
+    <Resource Include="Resource\Participals\foto7.jpg" />
+    <Resource Include="Resource\Participals\foto70.jpg" />
+    <Resource Include="Resource\Participals\foto8.jpg" />
+    <Resource Include="Resource\Participals\foto9.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
