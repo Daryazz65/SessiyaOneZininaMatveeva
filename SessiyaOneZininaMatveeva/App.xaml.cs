@@ -14,12 +14,12 @@ namespace SessiyaOneZininaMatveeva
     /// </summary>
         public partial class App : Application
         {
-            private static user25Entities1 context;
-            public static user25Entities1 GetContext()
+            private static user25Entities2 context;
+            public static user25Entities2 GetContext()
             {
                 if (context == null)
                 {
-                    context = new user25Entities1();
+                    context = new user25Entities2();
                 }
                 return context;
             }

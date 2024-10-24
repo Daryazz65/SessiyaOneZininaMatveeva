@@ -64,10 +64,53 @@
     </ApplicationDefinition>
     <Compile Include="AppData\ClassHelper.cs" />
     <Compile Include="AppData\ClassMessageBox.cs" />
-    <Compile Include="Model\Model1.Designer.cs">
+    <Compile Include="Model\Activity.cs">
+      <DependentUpon>ModelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\City.cs">
+      <DependentUpon>ModelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Country.cs">
+      <DependentUpon>ModelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Direction.cs">
+      <DependentUpon>ModelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Event.cs">
+      <DependentUpon>ModelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EventParticipant.cs">
+      <DependentUpon>ModelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Gender.cs">
+      <DependentUpon>ModelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Jury.cs">
+      <DependentUpon>ModelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ModelModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>ModelModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ModelModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ModelModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Moderator.cs">
+      <DependentUpon>ModelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Organizer.cs">
+      <DependentUpon>ModelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Participant.cs">
+      <DependentUpon>ModelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\BlockWindow.xaml.cs">
       <DependentUpon>BlockWindow.xaml</DependentUpon>
@@ -150,12 +193,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Model\Model1.edmx">
+    <EntityDeploy Include="Model\ModelModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModelModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <None Include="Model\ModelModel.edmx.diagram">
+      <DependentUpon>ModelModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -331,6 +374,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\istockphoto-1347624705-612x612.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\ModelModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelModel.edmx</DependentUpon>
+      <LastGenOutput>ModelModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\ModelModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelModel.edmx</DependentUpon>
+      <LastGenOutput>ModelModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -10,13 +10,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdEvent" Type="int" Nullable="false" />
-          <Property Name="DateStart" Type="date" Nullable="false" />
-          <Property Name="Activ" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Day" Type="int" Nullable="false" />
-          <Property Name="TimeStart" Type="time" Precision="7" Nullable="false" />
-          <Property Name="IdModerator" Type="int" Nullable="false" />
-          <Property Name="IdWinner" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Time" Type="datetime" Nullable="false" />
+          <Property Name="EventId" Type="int" Nullable="false" />
+          <Property Name="JuryId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="City">
           <Key>
@@ -50,7 +47,9 @@
           <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="Days" Type="int" Nullable="false" />
           <Property Name="CityId" Type="int" Nullable="false" />
-          <Property Name="OrganizerId" Type="int" />
+          <Property Name="OrganizerId" Type="int" Nullable="false" />
+          <Property Name="DirectionId" Type="int" Nullable="false" />
+          <Property Name="Logo" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="EventParticipant">
           <Key>
@@ -138,31 +137,19 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Activity">
-              <PropertyRef Name="IdEvent" />
+              <PropertyRef Name="EventId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Activity_Moderator">
-          <End Role="Moderator" Type="Self.Moderator" Multiplicity="1" />
+        <Association Name="FK_Activity_Jury">
+          <End Role="Jury" Type="Self.Jury" Multiplicity="1" />
           <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Moderator">
+            <Principal Role="Jury">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Activity">
-              <PropertyRef Name="IdModerator" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Activity_Participant">
-          <End Role="Participant" Type="Self.Participant" Multiplicity="1" />
-          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Participant">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Activity">
-              <PropertyRef Name="IdWinner" />
+              <PropertyRef Name="JuryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -178,8 +165,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Event_Direction">
+          <End Role="Direction" Type="Self.Direction" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Direction">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="DirectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Event_Organizer">
-          <End Role="Organizer" Type="Self.Organizer" Multiplicity="0..1" />
+          <End Role="Organizer" Type="Self.Organizer" Multiplicity="1" />
           <End Role="Event" Type="Self.Event" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Organizer">
@@ -350,16 +349,16 @@
             <End Role="Event" EntitySet="Event" />
             <End Role="Activity" EntitySet="Activity" />
           </AssociationSet>
-          <AssociationSet Name="FK_Activity_Moderator" Association="Self.FK_Activity_Moderator">
-            <End Role="Moderator" EntitySet="Moderator" />
-            <End Role="Activity" EntitySet="Activity" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Activity_Participant" Association="Self.FK_Activity_Participant">
-            <End Role="Participant" EntitySet="Participant" />
+          <AssociationSet Name="FK_Activity_Jury" Association="Self.FK_Activity_Jury">
+            <End Role="Jury" EntitySet="Jury" />
             <End Role="Activity" EntitySet="Activity" />
           </AssociationSet>
           <AssociationSet Name="FK_Event_City" Association="Self.FK_Event_City">
             <End Role="City" EntitySet="City" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_Direction" Association="Self.FK_Event_Direction">
+            <End Role="Direction" EntitySet="Direction" />
             <End Role="Event" EntitySet="Event" />
           </AssociationSet>
           <AssociationSet Name="FK_Event_Organizer" Association="Self.FK_Event_Organizer">
@@ -425,16 +424,12 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdEvent" Type="Int32" Nullable="false" />
-          <Property Name="DateStart" Type="DateTime" Nullable="false" />
-          <Property Name="Activ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Day" Type="Int32" Nullable="false" />
-          <Property Name="TimeStart" Type="Time" Nullable="false" />
-          <Property Name="IdModerator" Type="Int32" Nullable="false" />
-          <Property Name="IdWinner" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EventId" Type="Int32" Nullable="false" />
+          <Property Name="JuryId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Event" Relationship="Self.FK_Activity_Event" FromRole="Activity" ToRole="Event" />
-          <NavigationProperty Name="Moderator" Relationship="Self.FK_Activity_Moderator" FromRole="Activity" ToRole="Moderator" />
-          <NavigationProperty Name="Participant" Relationship="Self.FK_Activity_Participant" FromRole="Activity" ToRole="Participant" />
+          <NavigationProperty Name="Jury" Relationship="Self.FK_Activity_Jury" FromRole="Activity" ToRole="Jury" />
         </EntityType>
         <EntityType Name="City">
           <Key>
@@ -463,6 +458,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Event" Relationship="Self.FK_Event_Direction" FromRole="Direction" ToRole="Event" />
           <NavigationProperty Name="Jury" Relationship="Self.FK_Jury_Direction" FromRole="Direction" ToRole="Jury" />
           <NavigationProperty Name="Moderator" Relationship="Self.FK_Moderator_Direction" FromRole="Direction" ToRole="Moderator" />
         </EntityType>
@@ -472,12 +468,15 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Days" Type="Int32" Nullable="false" />
           <Property Name="CityId" Type="Int32" Nullable="false" />
-          <Property Name="OrganizerId" Type="Int32" />
+          <Property Name="OrganizerId" Type="Int32" Nullable="false" />
+          <Property Name="DirectionId" Type="Int32" Nullable="false" />
+          <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_Event" FromRole="Event" ToRole="Activity" />
           <NavigationProperty Name="City" Relationship="Self.FK_Event_City" FromRole="Event" ToRole="City" />
+          <NavigationProperty Name="Direction" Relationship="Self.FK_Event_Direction" FromRole="Event" ToRole="Direction" />
           <NavigationProperty Name="Organizer" Relationship="Self.FK_Event_Organizer" FromRole="Event" ToRole="Organizer" />
           <NavigationProperty Name="EventParticipant" Relationship="Self.FK_EventParticipant_Event" FromRole="Event" ToRole="EventParticipant" />
           <NavigationProperty Name="Moderator" Relationship="Self.FK_Moderator_Event" FromRole="Event" ToRole="Moderator" />
@@ -508,12 +507,13 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="CountryId" Type="Int32" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DirectionId" Type="Int32" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_Jury" FromRole="Jury" ToRole="Activity" />
           <NavigationProperty Name="Country" Relationship="Self.FK_Jury_Country" FromRole="Jury" ToRole="Country" />
           <NavigationProperty Name="Direction" Relationship="Self.FK_Jury_Direction" FromRole="Jury" ToRole="Direction" />
         </EntityType>
@@ -527,14 +527,13 @@
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="GenderId" Type="Int32" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CountryId" Type="Int32" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DirectionId" Type="Int32" Nullable="false" />
           <Property Name="EventId" Type="Int32" />
           <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_Moderator" FromRole="Moderator" ToRole="Activity" />
           <NavigationProperty Name="Country" Relationship="Self.FK_Moderator_Country" FromRole="Moderator" ToRole="Country" />
           <NavigationProperty Name="Direction" Relationship="Self.FK_Moderator_Direction" FromRole="Moderator" ToRole="Direction" />
           <NavigationProperty Name="Event" Relationship="Self.FK_Moderator_Event" FromRole="Moderator" ToRole="Event" />
@@ -549,7 +548,7 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="CountryId" Type="Int32" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
@@ -568,13 +567,12 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="CountryId" Type="Int32" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="GenderId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_Participant" FromRole="Participant" ToRole="Activity" />
           <NavigationProperty Name="Country" Relationship="Self.FK_Participant_Country" FromRole="Participant" ToRole="Country" />
           <NavigationProperty Name="EventParticipant" Relationship="Self.FK_EventParticipant_Participant" FromRole="Participant" ToRole="EventParticipant" />
           <NavigationProperty Name="Gender" Relationship="Self.FK_Participant_Gender" FromRole="Participant" ToRole="Gender" />
@@ -587,31 +585,19 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Activity">
-              <PropertyRef Name="IdEvent" />
+              <PropertyRef Name="EventId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Activity_Moderator">
-          <End Role="Moderator" Type="Self.Moderator" Multiplicity="1" />
+        <Association Name="FK_Activity_Jury">
+          <End Role="Jury" Type="Self.Jury" Multiplicity="1" />
           <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Moderator">
+            <Principal Role="Jury">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Activity">
-              <PropertyRef Name="IdModerator" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Activity_Participant">
-          <End Role="Participant" Type="Self.Participant" Multiplicity="1" />
-          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Participant">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Activity">
-              <PropertyRef Name="IdWinner" />
+              <PropertyRef Name="JuryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -675,6 +661,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Event_Direction">
+          <End Role="Direction" Type="Self.Direction" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Direction">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="DirectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Jury_Direction">
           <End Role="Direction" Type="Self.Direction" Multiplicity="1" />
           <End Role="Jury" Type="Self.Jury" Multiplicity="*" />
@@ -700,7 +698,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Event_Organizer">
-          <End Role="Organizer" Type="Self.Organizer" Multiplicity="0..1" />
+          <End Role="Organizer" Type="Self.Organizer" Multiplicity="1" />
           <End Role="Event" Type="Self.Event" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Organizer">
@@ -783,7 +781,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="user25Entities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="user25Entities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Activity" EntityType="Self.Activity" />
           <EntitySet Name="City" EntityType="Self.City" />
           <EntitySet Name="Country" EntityType="Self.Country" />
@@ -799,12 +797,8 @@
             <End Role="Event" EntitySet="Event" />
             <End Role="Activity" EntitySet="Activity" />
           </AssociationSet>
-          <AssociationSet Name="FK_Activity_Moderator" Association="Self.FK_Activity_Moderator">
-            <End Role="Moderator" EntitySet="Moderator" />
-            <End Role="Activity" EntitySet="Activity" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Activity_Participant" Association="Self.FK_Activity_Participant">
-            <End Role="Participant" EntitySet="Participant" />
+          <AssociationSet Name="FK_Activity_Jury" Association="Self.FK_Activity_Jury">
+            <End Role="Jury" EntitySet="Jury" />
             <End Role="Activity" EntitySet="Activity" />
           </AssociationSet>
           <AssociationSet Name="FK_Event_City" Association="Self.FK_Event_City">
@@ -826,6 +820,10 @@
           <AssociationSet Name="FK_Participant_Country" Association="Self.FK_Participant_Country">
             <End Role="Country" EntitySet="Country" />
             <End Role="Participant" EntitySet="Participant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_Direction" Association="Self.FK_Event_Direction">
+            <End Role="Direction" EntitySet="Direction" />
+            <End Role="Event" EntitySet="Event" />
           </AssociationSet>
           <AssociationSet Name="FK_Jury_Direction" Association="Self.FK_Jury_Direction">
             <End Role="Direction" EntitySet="Direction" />
@@ -869,18 +867,15 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище user25ModelContainer" CdmEntityContainer="user25Entities1">
+        <EntityContainerMapping StorageEntityContainer="Хранилище user25ModelContainer" CdmEntityContainer="user25Entities2">
           <EntitySetMapping Name="Activity">
             <EntityTypeMapping TypeName="user25Model.Activity">
               <MappingFragment StoreEntitySet="Activity">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="IdEvent" ColumnName="IdEvent" />
-                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
-                <ScalarProperty Name="Activ" ColumnName="Activ" />
-                <ScalarProperty Name="Day" ColumnName="Day" />
-                <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
-                <ScalarProperty Name="IdModerator" ColumnName="IdModerator" />
-                <ScalarProperty Name="IdWinner" ColumnName="IdWinner" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="JuryId" ColumnName="JuryId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -919,6 +914,8 @@
                 <ScalarProperty Name="Days" ColumnName="Days" />
                 <ScalarProperty Name="CityId" ColumnName="CityId" />
                 <ScalarProperty Name="OrganizerId" ColumnName="OrganizerId" />
+                <ScalarProperty Name="DirectionId" ColumnName="DirectionId" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1023,6 +1020,7 @@
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

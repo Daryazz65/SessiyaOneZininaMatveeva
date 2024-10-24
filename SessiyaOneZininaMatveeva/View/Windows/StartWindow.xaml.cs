@@ -21,7 +21,7 @@ namespace SessiyaOneZininaMatveeva.View.Windows
     /// </summary>
     public partial class StartWindow : Window
     {
-        private static user25Entities1 context = App.GetContext();
+        private static user25Entities2 context = App.GetContext();
         public StartWindow()
         {
             List<string> roles = new List<string> { "Организатор", "Модератор", "Жюри", "Участник" };
