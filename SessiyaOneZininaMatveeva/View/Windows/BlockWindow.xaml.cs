@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,28 +16,25 @@ using System.Windows.Shapes;
 namespace SessiyaOneZininaMatveeva.View.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для EventsWindow.xaml
+    /// Логика взаимодействия для BlockWindow.xaml
     /// </summary>
-    public partial class EventsWindow : Window
+    public partial class BlockWindow : Window
     {
-        public EventsWindow()
+        public BlockWindow()
         {
             InitializeComponent();
-        }
+            Timer timer;
+            timer = new Timer(CloseWindow, null, 10000, Timeout.Infinite);
 
-        private void SignInHL_Click(object sender, RoutedEventArgs e)
-        {
+            void CloseWindow(object state)
+            {
+                Dispatcher.Invoke(() =>
+                {
+                    this.Close();
 
-        }
+                });
 
-        private void DirectionCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void EventsLb_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-
+            }
         }
     }
 }

@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SessiyaOneZininaMatveeva.View.Windows"
         mc:Ignorable="d"
-        Title="CaptchaWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Окно CAPTCHA" SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterScreen">
+    <StackPanel Margin="20">
+        <TextBlock Name="CaptchaTbl" Text="12345" FontSize="30" HorizontalAlignment="Center">
+            <TextBlock.Background>
+                <ImageBrush ImageSource="\Resource\istockphoto-1347624705-612x612.jpg"/>
+            </TextBlock.Background>
+        </TextBlock>
+        <Border Height="45"/>
+        <TextBlock Text="Введите CAPTCHA:"/>
+        <TextBox Name="CaptchaTb"/>
+        <Border Height="20"/>
+        <Button Name="EntrytBtn" Content="Подтвердить" Click="EntrytBtn_Click"/>
+    </StackPanel>
 </Window>

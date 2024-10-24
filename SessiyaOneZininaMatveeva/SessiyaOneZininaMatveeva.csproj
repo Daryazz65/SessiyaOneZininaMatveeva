@@ -69,8 +69,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\BlockWindow.xaml.cs">
+      <DependentUpon>BlockWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\CaptchaWindow.xaml.cs">
       <DependentUpon>CaptchaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\EventInfoWindow.xaml.cs">
+      <DependentUpon>EventInfoWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\EventsWindow.xaml.cs">
       <DependentUpon>EventsWindow.xaml</DependentUpon>
@@ -101,7 +107,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Windows\BlockWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\CaptchaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\EventInfoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -314,6 +328,9 @@
     <Resource Include="Resource\Participals\foto70.jpg" />
     <Resource Include="Resource\Participals\foto8.jpg" />
     <Resource Include="Resource\Participals\foto9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\istockphoto-1347624705-612x612.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

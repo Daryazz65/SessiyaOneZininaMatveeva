@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SessiyaOneZininaMatveeva.AppData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,35 @@ namespace SessiyaOneZininaMatveeva.View.Windows
     /// </summary>
     public partial class CaptchaWindow : Window
     {
+        string captcha;
+        int errorsCount = 0;
         public CaptchaWindow()
         {
             InitializeComponent();
+            captcha = ClassHelper.GenerateCaptcha();
+            CaptchaTbl.Text = captcha;
+        }
+
+        private void EntrytBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (CaptchaTb.Text == captcha)
+            {
+                DialogResult = true;
+            }
+            else
+            {
+                errorsCount++;
+                ClassMessageBox.Error("CAPTCHA введеа неправильно.");
+                captcha = ClassHelper.GenerateCaptcha();
+                CaptchaTbl.Text = captcha;
+                CaptchaTb.Text = string.Empty;
+            }
+            if (errorsCount == 3)
+            {
+                BlockWindow blockWindow = new BlockWindow();
+                blockWindow.ShowDialog();
+                errorsCount = 0;
+            }
         }
     }
 }
