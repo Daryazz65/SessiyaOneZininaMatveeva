@@ -5,8 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SessiyaOneZininaMatveeva.View.Windows"
         mc:Ignorable="d"
-        Title="StartWindow" Height="450" Width="800">
+        Title="Окно авторизации" 
+        MinHeight="400" MinWidth="600"
+        WindowStartupLocation="CenterScreen" 
+        SizeToContent="WidthAndHeight">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="30" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="30" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Выберите роль:" Grid.Column="1" Grid.Row="1"/>
+        <ComboBox Name="ViborRoleCmb" Grid.Column="3" Grid.Row="1"/>
+        <TextBlock Text="Логин:" Grid.Column="1" Grid.Row="3"/>
+        <TextBox Name="LoginTb" Grid.Column="3" Grid.Row="3"/>
+        <TextBlock Text="Пароль:" Grid.Column="1" Grid.Row="5"/>
+        <PasswordBox Name="PasswordTb" Grid.Column="3" Grid.Row="5"/>
+            <Button Grid.Column="1" Grid.Row="7" 
+                    Name="EntryBtn" Content="Войти" 
+                    Click="EntryBtn_Click"  HorizontalAlignment="Left"/>
+        <StackPanel Grid.Column="3" Grid.Row="7">
+            <TextBlock FontSize="15"><Hyperlink Name="SignHl" 
+                    Click="SignHl_Click">Зарегистрироваться</Hyperlink></TextBlock>
+            <Border Height="10"/>
+
+            <TextBlock FontSize="15"><Hyperlink Name="EnterHl" 
+                    Click="EnterHl_Click">Войти без авторизации</Hyperlink></TextBlock>
+        </StackPanel>
     </Grid>
 </Window>
