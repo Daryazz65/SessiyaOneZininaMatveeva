@@ -4,6 +4,13 @@
              xmlns:local="clr-namespace:SessiyaOneZininaMatveeva"
              StartupUri="\View\Windows\StartWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="\styles\buttonst.xaml"/>
+                <ResourceDictionary Source="\styles\combost.xaml"/>
+                <ResourceDictionary Source="\styles\textblockst.xaml"/>
+                <ResourceDictionary Source="\styles\textboxst.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

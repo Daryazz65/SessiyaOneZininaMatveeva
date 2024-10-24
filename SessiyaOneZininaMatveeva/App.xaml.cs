@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SessiyaOneZininaMatveeva.Model;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -11,7 +12,16 @@ namespace SessiyaOneZininaMatveeva
     /// <summary>
     /// Логика взаимодействия для App.xaml
     /// </summary>
-    public partial class App : Application
-    {
-    }
+        public partial class App : Application
+        {
+            private static user25Entities1 context;
+            public static user25Entities1 GetContext()
+            {
+                if (context == null)
+                {
+                    context = new user25Entities1();
+                }
+                return context;
+            }
+        }
 }
