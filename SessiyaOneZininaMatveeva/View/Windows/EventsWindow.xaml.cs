@@ -59,10 +59,6 @@ namespace SessiyaOneZininaMatveeva.View.Windows
         {
             EventInfoWindow eventInfoWIndow = new EventInfoWindow(EventsLb.SelectedItem as Event);
             eventInfoWIndow.ShowDialog();
-            //вапрвапрвап
-            //псраопроа
-            //пгрщшгощшо
-            //вплпр
         }
     }
 }
