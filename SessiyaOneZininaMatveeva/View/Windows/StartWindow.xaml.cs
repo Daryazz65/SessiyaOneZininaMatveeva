@@ -1,5 +1,6 @@
 ﻿using SessiyaOneZininaMatveeva.AppData;
 using SessiyaOneZininaMatveeva.Model;
+using SessiyaOneZininaMatveeva.View.Organiezer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,15 +34,16 @@ namespace SessiyaOneZininaMatveeva.View.Windows
         {
             if (ClassHelper.Authorise(LoginTb.Text, PasswordTb.Password, ViborRoleCmb.SelectedItem as string))
             {
-                CaptchaWindow cAPTCHAWindow = new CaptchaWindow();
-                if (cAPTCHAWindow.ShowDialog() == true)
+                CaptchaWindow captchaWindow = new CaptchaWindow();
+                if (captchaWindow.ShowDialog() == true)
                 {
                     if (ViborRoleCmb.SelectedIndex == 0)
                     {
-
+                        OrganizerWindow organizerWindow = new OrganizerWindow(ClassHelper.selectedOrg);
+                        organizerWindow.Show();
+                        Close();
                     }
                 }
-
             }
         }
 

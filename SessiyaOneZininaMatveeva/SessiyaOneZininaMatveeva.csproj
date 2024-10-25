@@ -130,6 +130,9 @@
     <Compile Include="View\Windows\EventsWindow.xaml.cs">
       <DependentUpon>EventsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\ProfileWIndow.xaml.cs">
+      <DependentUpon>ProfileWIndow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\SignWindow.xaml.cs">
       <DependentUpon>SignWindow.xaml</DependentUpon>
     </Compile>
@@ -181,6 +184,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\EventsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\ProfileWIndow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

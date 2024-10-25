@@ -25,7 +25,6 @@ namespace SessiyaOneZininaMatveeva.View.Windows
             InitializeComponent();
             Timer timer;
             timer = new Timer(CloseWindow, null, 10000, Timeout.Infinite);
-
             void CloseWindow(object state)
             {
                 Dispatcher.Invoke(() =>
@@ -33,7 +32,6 @@ namespace SessiyaOneZininaMatveeva.View.Windows
                     this.Close();
 
                 });
-
             }
         }
     }

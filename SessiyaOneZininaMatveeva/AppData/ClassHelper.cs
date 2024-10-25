@@ -10,121 +10,132 @@ namespace SessiyaOneZininaMatveeva.AppData
 {
     internal class ClassHelper
     {
-        // Авторизация.
-
-        public static Moderator selectedModer;
-        public static Organizer selectedOrg;
-        public static Jury selectedJury;
-        public static Participant selectedPart;
-        private static user25Entities context = App.GetContext();
-
-        public static bool Authorise(string login, string password, string role)
+        /// <summary>
+        /// Класс для авторизации.
+        /// </summary>
+        internal class AuthoriseHelper
         {
-            if (login == string.Empty || password == string.Empty)
+            public static Moderator _selectedModer;
+            public static Organizer _selectedUser;
+            public static Jury _selectedJury;
+            public static Participant _selectedPart;
+            private static user25Entities _context = App.GetContext();
+            /// <summary> 
+            /// Авторизует пользователя.
+            /// </summary>
+            /// <param name="login"></param>
+            /// <param name="password"></param>
+            /// <returns></returns>
+            public static bool Authorise(string login, string password, string role)
             {
-                ClassMessageBox.Error("Не все поля для ввода были заполнены.");
-                return false;
-            }
-            else
-            {
-                if (role == "Организатор")
+                if (login == string.Empty || password == string.Empty)
                 {
-                    List<Organizer> organizers = context.Organizer.ToList();
-                    foreach (Organizer org in organizers)
+                    ClassMessageBox.Error("Не все поля для ввода были заполнены.");
+                    return false;
+                }
+                else
+                {
+                    if (role == "Организатор")
                     {
-                        if (login == org.Id.ToString() && password == org.Password)
+                        List<Organizer> organizers = _context.Organizer.ToList();
+                        foreach (Organizer org in organizers)
                         {
-                            selectedOrg = org;
-                            return true;
+                            if (login == org.Id.ToString() && password == org.Password)
+                            {
+                                _selectedOrg = org;
+                                return true;
+                            }
+                        }
+                        if (_selectedOrg == null)
+                        {
+                            ClassMessageBox.Error("Неправильно введен логин или пароль");
+                            return false;
                         }
                     }
-                    if (selectedOrg == null)
+                    else if (role == "Модератор")
                     {
-                        ClassMessageBox.Error("Неправильно введен логин или пароль");
+                        List<Moderator> moderators = _context.Moderator.ToList();
+                        foreach (Moderator moderator in moderators)
+                        {
+                            if (login == moderator.Id.ToString() && password == moderator.Password)
+                            {
+                                _selectedModer = moderator;
+                                return true;
+                            }
+                            else
+                            {
+                                ClassMessageBox.Error("Неправильно введен логин или пароль");
+                                return false;
+                            }
+                        }
+                    }
+                    else if (role == "Жюри")
+                    {
+                        List<Jury> juries = _context.Jury.ToList();
+                        foreach (Jury jury in juries)
+                        {
+                            if (login == jury.Id.ToString() && password == jury.Email)
+                            {
+                                _selectedJury = jury;
+                                return true;
+                            }
+                            else
+                            {
+                                ClassMessageBox.Error("Неправильно введен логин или пароль");
+                                return false;
+                            }
+                        }
+                    }
+                    else if (role == "Участник")
+                    {
+                        List<Participant> participants = _context.Participant.ToList();
+                        foreach (Participant participant in participants)
+                        {
+                            if (login == participant.Id.ToString() && password == participant.Password)
+                            {
+                                _selectedPart = participant;
+                                return true;
+                            }
+                            else
+                            {
+                                ClassMessageBox.Error("Неправильно введен логин или пароль");
+                                return false;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                    if (selectedJury != null || selectedModer != null || selectedOrg != null || selectedPart != null)
+                    {
+                        return true;
+                    }
+                    else
+                    {
                         return false;
                     }
                 }
-                else if (role == "Модератор")
-                {
-                    List<Moderator> moderators = context.Moderator.ToList();
-                    foreach (Moderator moderator in moderators)
-                    {
-                        if (login == moderator.Id.ToString() && password == moderator.Password)
-                        {
-                            selectedModer = moderator;
-                            return true;
-                        }
-                        else
-                        {
-                            ClassMessageBox.Error("Неправильно введен логин или пароль");
-                            return false;
-                        }
-                    }
-                }
-                else if (role == "Жюри")
-                {
-                    List<Jury> juries = context.Jury.ToList();
-                    foreach (Jury jury in juries)
-                    {
-                        if (login == jury.Id.ToString() && password == jury.Email)
-                        {
-                            selectedJury = jury;
-                            return true;
-                        }
-                        else
-                        {
-                            ClassMessageBox.Error("Неправильно введен логин или пароль");
-                            return false;
-                        }
-                    }
-                }
-                else if (role == "Участник")
-                {
-                    List<Participant> participants = context.Participant.ToList();
-                    foreach (Participant participant in participants)
-                    {
-                        if (login == participant.Id.ToString() && password == participant.Password)
-                        {
-                            selectedPart = participant;
-                            return true;
-                        }
-                        else
-                        {
-                            ClassMessageBox.Error("Неправильно введен логин или пароль");
-                            return false;
-                        }
-                    }
-                }
-                else
-                {
-                    return false;
-                }
-                if (selectedJury != null || selectedModer != null || selectedOrg != null || selectedPart != null)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+
             }
 
-        }
-
-
-        // CAPTCHA.
-        public static string GenerateCaptcha()
-        {
-            List<char> chars = new List<char> { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+            /// <summary>
+            /// Генерирует текст капчи.
+            /// </summary>
+            /// <returns></returns>
+            public static string GenerateCaptcha()
+            {
+                List<char> chars = new List<char> { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
                                                 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
                                                 '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'};
-            Random random = new Random();
-            string output = string.Empty;
-            for (int i = 0; i < 5; i++)
-            {
-                output += chars[random.Next(0, chars.Count)];
+                Random random = new Random();
+                string output = string.Empty;
+                for (int i = 0; i < 5; i++)
+                {
+                    output += chars[random.Next(0, chars.Count)];
+                }
+                return output;
             }
-            return output;
         }
     }
 }
