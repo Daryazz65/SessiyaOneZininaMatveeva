@@ -16,7 +16,7 @@ namespace SessiyaOneZininaMatveeva.AppData
         public static Organizer selectedOrg;
         public static Jury selectedJury;
         public static Participant selectedPart;
-        private static user25Entities2 context = App.GetContext();
+        private static user25Entities context = App.GetContext();
 
         public static bool Authorise(string login, string password, string role)
         {

@@ -20,7 +20,7 @@ namespace SessiyaOneZininaMatveeva.View.Windows
     /// </summary>
     public partial class EventsWindow : Window
     {
-        private static user25Entities2 context = App.GetContext();
+        private static user25Entities context = App.GetContext();
         List<Direction> directions = context.Direction.ToList();
         List<Event> events = context.Event.ToList();
 

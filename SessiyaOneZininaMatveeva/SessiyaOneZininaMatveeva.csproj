@@ -64,6 +64,54 @@
     </ApplicationDefinition>
     <Compile Include="AppData\ClassHelper.cs" />
     <Compile Include="AppData\ClassMessageBox.cs" />
+    <Compile Include="Model\Activity.cs">
+      <DependentUpon>BdModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BdModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BdModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BdModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BdModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BdModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BdModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\City.cs">
+      <DependentUpon>BdModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Country.cs">
+      <DependentUpon>BdModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Direction.cs">
+      <DependentUpon>BdModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Event.cs">
+      <DependentUpon>BdModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EventParticipant.cs">
+      <DependentUpon>BdModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Gender.cs">
+      <DependentUpon>BdModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Jury.cs">
+      <DependentUpon>BdModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Moderator.cs">
+      <DependentUpon>BdModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Organizer.cs">
+      <DependentUpon>BdModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Participant.cs">
+      <DependentUpon>BdModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\BlockWindow.xaml.cs">
       <DependentUpon>BlockWindow.xaml</DependentUpon>
     </Compile>
@@ -145,6 +193,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Model\BdModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BdModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\BdModel.edmx.diagram">
+      <DependentUpon>BdModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -155,7 +210,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
     <Folder Include="View\Pages\" />
   </ItemGroup>
   <ItemGroup>
@@ -320,6 +374,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\istockphoto-1347624705-612x612.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\BdModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BdModel.edmx</DependentUpon>
+      <LastGenOutput>BdModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\BdModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BdModel.edmx</DependentUpon>
+      <LastGenOutput>BdModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
