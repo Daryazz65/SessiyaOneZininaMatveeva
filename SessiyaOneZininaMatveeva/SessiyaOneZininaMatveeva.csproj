@@ -115,6 +115,9 @@
     <Compile Include="View\Organiezer\NewEventWindow.xaml.cs">
       <DependentUpon>NewEventWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Organiezer\OrganizerWindow.xaml.cs">
+      <DependentUpon>OrganizerWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\BlockWindow.xaml.cs">
       <DependentUpon>BlockWindow.xaml</DependentUpon>
     </Compile>
@@ -158,6 +161,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Organiezer\NewEventWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Organiezer\OrganizerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -102,20 +102,20 @@ namespace SessiyaOneZininaMatveeva.View.Organiezer
             {
                 rows.Add((StackPanel)JuryGrid.Children[i]);
             }
-            for (int i = 0; i < rows.Count; i++)
-            {
-                if (rows[i].Children.GetType().Equals(Border ////////////////// \\\\\\\\\\\\\\\\\))
-                {
+            //for (int i = 0; i < rows.Count; i++)
+            //{
+            //    if (rows[i].Children.GetType().Equals(Border ///// )
+            //    {
 
-                }
-                Activity newActivity = new Activity()
-                {
-                    Name = (rows[i].Children[0] as TextBox).Text,
-                    Jury = (rows[i].Children[2] as ComboBox).SelectedItem as Jury,
-                    Event = newEvent
-                };
-                context.Activity.Add(newActivity);
-            }
+            //    }
+            //    Activity newActivity = new Activity()
+            //    {
+            //        Name = (rows[i].Children[0] as TextBox).Text,
+            //        Jury = (rows[i].Children[2] as ComboBox).SelectedItem as Jury,
+            //        Event = newEvent
+            //    };
+            //    context.Activity.Add(newActivity);
+            //}
             context.SaveChanges();
         }
     }
