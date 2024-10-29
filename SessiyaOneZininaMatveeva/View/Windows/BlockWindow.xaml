@@ -6,8 +6,10 @@
         xmlns:local="clr-namespace:SessiyaOneZininaMatveeva.View.Windows"
         mc:Ignorable="d"
         Title="BlockWindow" Height="450" Width="800"
-        WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
+        WindowStartupLocation="CenterScreen" 
+        ResizeMode="NoResize" WindowStyle="None">
     <Grid>
-        <TextBlock Text="Вы заблокированы на 10 секунд." HorizontalAlignment="Center"/>
+        <TextBlock Text="Вы заблокированы на 10 секунд." 
+                   HorizontalAlignment="Center"/>
     </Grid>
 </Window>

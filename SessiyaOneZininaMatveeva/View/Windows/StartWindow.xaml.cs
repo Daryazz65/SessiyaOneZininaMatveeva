@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static SessiyaOneZininaMatveeva.AppData.ClassHelper;
 
 namespace SessiyaOneZininaMatveeva.View.Windows
 {
@@ -22,7 +23,7 @@ namespace SessiyaOneZininaMatveeva.View.Windows
     /// </summary>
     public partial class StartWindow : Window
     {
-        private static user25Entities context = App.GetContext();
+        private static user25Entities _context = App.GetContext();
         public StartWindow()
         {
             List<string> roles = new List<string> { "Организатор", "Модератор", "Жюри", "Участник" };
@@ -32,25 +33,26 @@ namespace SessiyaOneZininaMatveeva.View.Windows
 
         private void EntryBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (ClassHelper.Authorise(LoginTb.Text, PasswordTb.Password, ViborRoleCmb.SelectedItem as string))
+            if (AuthoriseHelper.Authorise(LoginTb.Text, PasswordTb.Password, ViborRoleCmb.SelectedItem as string))
             {
-                CaptchaWindow captchaWindow = new CaptchaWindow();
-                if (captchaWindow.ShowDialog() == true)
+                CaptchaWindow cAPTCHAWindow = new CaptchaWindow();
+                if (cAPTCHAWindow.ShowDialog() == true)
                 {
                     if (ViborRoleCmb.SelectedIndex == 0)
                     {
-                        OrganizerWindow organizerWindow = new OrganizerWindow(ClassHelper.selectedOrg);
+                        OrganizerWindow organizerWindow = new OrganizerWindow(AuthoriseHelper.selectedOrg);
                         organizerWindow.Show();
                         Close();
                     }
                 }
+
             }
         }
 
-        private void SignHl_Click(object sender, RoutedEventArgs e)
+        private void SignUpHl_Click(object sender, RoutedEventArgs e)
         {
-            SignWindow signWindow = new SignWindow();
-            signWindow.Show();
+            SignWindow signUpWindow = new SignWindow();
+            signUpWindow.Show();
             Close();
         }
 

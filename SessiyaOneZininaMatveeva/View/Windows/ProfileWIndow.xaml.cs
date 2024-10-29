@@ -24,7 +24,7 @@ namespace SessiyaOneZininaMatveeva.View.Windows
         Organizer _selectedUser;
         string password = string.Empty;
         string newPassword = string.Empty;
-        private static user25Entities context = App.GetContext();
+        private static user25Entities _context = App.GetContext();
         public ProfileWIndow(Organizer selectedUser)
         {
             InitializeComponent();
@@ -35,16 +35,6 @@ namespace SessiyaOneZininaMatveeva.View.Windows
             IsVisibleCb.IsChecked = true;
             PasswordPb.Visibility = Visibility.Hidden;
             NewPasswordPb.Visibility = Visibility.Hidden;
-        }
-
-        private void ChangePasswordCb_Checked(object sender, RoutedEventArgs e)
-        {
-            PasswordGrid.Visibility = Visibility.Visible;
-        }
-
-        private void ChangePasswordCb_Unchecked(object sender, RoutedEventArgs e)
-        {
-            PasswordGrid.Visibility = Visibility.Hidden;
         }
 
         private void IsVisibleCb_Checked(object sender, RoutedEventArgs e)
@@ -59,7 +49,6 @@ namespace SessiyaOneZininaMatveeva.View.Windows
             PasswordTb.Visibility = Visibility.Visible;
             NewPasswordTb.Visibility = Visibility.Visible;
         }
-
         private void IsVisibleCb_Unchecked(object sender, RoutedEventArgs e)
         {
             password = PasswordTb.Text;
@@ -82,7 +71,7 @@ namespace SessiyaOneZininaMatveeva.View.Windows
                     if (PasswordTb.Text == NewPasswordTb.Text)
                     {
                         _selectedUser.Password = PasswordTb.Text;
-                        context.SaveChanges();
+                        _context.SaveChanges();
                         ClassMessageBox.Information("Пароль успешно сменен.");
                         Close();
                     }
@@ -103,7 +92,7 @@ namespace SessiyaOneZininaMatveeva.View.Windows
                     if (PasswordPb.Password == NewPasswordPb.Password)
                     {
                         _selectedUser.Password = PasswordPb.Password;
-                        context.SaveChanges();
+                        _context.SaveChanges();
                         ClassMessageBox.Information("Пароль успешно сменен.");
                         Close();
                     }
@@ -123,5 +112,17 @@ namespace SessiyaOneZininaMatveeva.View.Windows
         {
             Close();
         }
+
+        private void ChangePasswordCb_Checked(object sender, RoutedEventArgs e)
+        {
+            PasswordGrid.Visibility = Visibility.Visible;
+        }
+
+        private void ChangePasswordCb_Unchecked(object sender, RoutedEventArgs e)
+        {
+            PasswordGrid.Visibility = Visibility.Hidden;
+        }
+
+
     }
 }

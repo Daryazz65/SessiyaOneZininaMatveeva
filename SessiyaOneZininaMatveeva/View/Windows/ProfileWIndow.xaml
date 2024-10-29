@@ -12,7 +12,8 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Мой профиль" FontWeight="Bold" HorizontalAlignment="Center"/>
+        <TextBlock Text="Мой профиль" FontWeight="Bold" 
+                   HorizontalAlignment="Center"/>
         <Grid Grid.Row="1" Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
@@ -55,12 +56,15 @@
                     <TextBlock Text="{Binding Phone}"/>
                     <Border Height="5"/>
                     <TextBlock Text="{Binding Email}" Width="160" 
-                               TextWrapping="Wrap" HorizontalAlignment="Left"/>
+                               TextWrapping="Wrap"
+                               HorizontalAlignment="Left"/>
                 </StackPanel>
             </Grid>
             <StackPanel Grid.Column="1" Margin="10">
-                <Image Source="{Binding Photo}" Height="100" Width="150"/>
-                <CheckBox Name="ChangePasswordCb" Content="Смена пароля:" 
+                <Image Source="{Binding Photo}" Height="100" 
+                       Width="150"/>
+                <CheckBox Name="ChangePasswordCb" 
+                          Content="Смена пароля:" 
                           Checked="ChangePasswordCb_Checked" 
                           Unchecked="ChangePasswordCb_Unchecked" 
                           VerticalContentAlignment="Center"/>
@@ -81,17 +85,21 @@
                     <TextBox Name="PasswordTb" Grid.Column="1"/>
                     <PasswordBox Name="PasswordPb" Grid.Column="1"/>
                     <TextBlock Text="Повтор пароля:" Grid.Row="2"/>
-                    <TextBox Name="NewPasswordTb" Grid.Column="1" Grid.Row="2"/>
-                    <PasswordBox Name="NewPasswordPb" Grid.Column="1" Grid.Row="2"/>
+                    <TextBox Name="NewPasswordTb" Grid.Column="1"
+                             Grid.Row="2"/>
+                    <PasswordBox Name="NewPasswordPb" Grid.Column="1" 
+                                 Grid.Row="2"/>
                     <StackPanel Grid.Row="3" Grid.ColumnSpan="2">
                         <Border Height="5"/>
-                        <CheckBox Name="IsVisibleCb" Checked="IsVisibleCb_Checked" 
+                        <CheckBox Name="IsVisibleCb" 
+                                  Checked="IsVisibleCb_Checked" 
                                   Unchecked="IsVisibleCb_Unchecked"  
                                   Content="Видимый пароль" 
                                   VerticalContentAlignment="Center"/>
                         <Border Height="5"/>
                         <StackPanel Orientation="Horizontal">
-                            <Button Name="OkBtn" Content="Ok" Click="OkBtn_Click"/>
+                            <Button Name="OkBtn" Content="Ok"
+                                    Click="OkBtn_Click"/>
                             <Border Width="20"/>
                             <Button Name="CancelBtn" Content="Отмена" 
                                     Click="CancelBtn_Click"/>

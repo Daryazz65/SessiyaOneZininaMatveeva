@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static SessiyaOneZininaMatveeva.AppData.ClassHelper;
 
 namespace SessiyaOneZininaMatveeva.View.Windows
 {
@@ -25,7 +26,7 @@ namespace SessiyaOneZininaMatveeva.View.Windows
         public CaptchaWindow()
         {
             InitializeComponent();
-            captcha = ClassHelper.GenerateCaptcha();
+            captcha = AuthoriseHelper.GenerateCaptcha();
             CaptchaTbl.Text = captcha;
         }
 
@@ -39,7 +40,7 @@ namespace SessiyaOneZininaMatveeva.View.Windows
             {
                 errorsCount++;
                 ClassMessageBox.Error("CAPTCHA введеа неправильно.");
-                captcha = ClassHelper.GenerateCaptcha();
+                captcha = AuthoriseHelper.GenerateCaptcha();
                 CaptchaTbl.Text = captcha;
                 CaptchaTb.Text = string.Empty;
             }

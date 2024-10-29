@@ -40,7 +40,7 @@
                     Click="EntryBtn_Click"  HorizontalAlignment="Left"/>
         <StackPanel Grid.Column="3" Grid.Row="7">
             <TextBlock FontSize="15"><Hyperlink Name="SignHl" 
-                    Click="SignHl_Click">Зарегистрироваться</Hyperlink></TextBlock>
+                    Click="SignUpHl_Click">Зарегистрироваться</Hyperlink></TextBlock>
             <Border Height="10"/>
 
             <TextBlock FontSize="15"><Hyperlink Name="EnterHl" 

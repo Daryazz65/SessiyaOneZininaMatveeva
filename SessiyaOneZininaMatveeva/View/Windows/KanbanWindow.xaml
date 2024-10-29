@@ -5,8 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SessiyaOneZininaMatveeva.View.Windows"
         mc:Ignorable="d"
-        Title="KanbanWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Kanban-доска" SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Доска" FontSize="30" 
+                   HorizontalAlignment="Center"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <TextBlock Text="Мероприятие"/>
+            <Border Width="50"/>
+            <ComboBox Name="EventsCmb" 
+                      SelectionChanged="EventsCmb_SelectionChanged"/>
+            <Border Width="50"/>
+            <Button Name="PdfBtn" Click="PdfBtn_Click"  Content="pdf"/>
+        </StackPanel>
+        <ListView Name="ActivityLb" Grid.Row="3" 
+                  HorizontalAlignment="Center" 
+                  ScrollViewer.CanContentScroll="True" Width="800" 
+                  ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid HorizontalAlignment="Center" 
+                          Margin="10">
+                        <TextBlock Padding="10" 
+                                   HorizontalAlignment="Center">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0}, {1:HH:MM}, {2}">
+                                    <Binding Path="Name"/>
+                                    <Binding Path="Time"/>
+                                    <Binding Path="Jury.Email"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                        <Border Background="Transparent" 
+                                BorderBrush="Green" BorderThickness="1" 
+                                CornerRadius="10"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" Width="800">
+                    </WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
     </Grid>
 </Window>
