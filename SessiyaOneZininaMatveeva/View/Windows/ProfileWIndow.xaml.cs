@@ -83,17 +83,17 @@ namespace SessiyaOneZininaMatveeva.View.Windows
                     {
                         _selectedUser.Password = PasswordTb.Text;
                         context.SaveChanges();
-                        ClassHelper.Information("Пароль успешно сменен.");
+                        ClassMessageBox.Information("Пароль успешно сменен.");
                         Close();
                     }
                     else
                     {
-                        ClassHelper.Error("Пароли не совпадают.");
+                        ClassMessageBox.Error("Пароли не совпадают.");
                     }
                 }
                 else
                 {
-                    ClassHelper.Error("Заполните все поля для ввода.");
+                    ClassMessageBox.Error("Заполните все поля для ввода.");
                 }
             }
             else
@@ -104,17 +104,17 @@ namespace SessiyaOneZininaMatveeva.View.Windows
                     {
                         _selectedUser.Password = PasswordPb.Password;
                         context.SaveChanges();
-                        ClassHelper.Information("Пароль успешно сменен.");
+                        ClassMessageBox.Information("Пароль успешно сменен.");
                         Close();
                     }
                     else
                     {
-                        ClassHelper.Error("Пароли не совпадают.");
+                        ClassMessageBox.Error("Пароли не совпадают.");
                     }
                 }
                 else
                 {
-                    ClassHelper.Error("Заполните все поля для ввода.");
+                    ClassMessageBox.Error("Заполните все поля для ввода.");
                 }
             }
         }

@@ -10,6 +10,7 @@
                 <ResourceDictionary Source="\styles\combost.xaml"/>
                 <ResourceDictionary Source="\styles\textblockst.xaml"/>
                 <ResourceDictionary Source="\styles\textboxst.xaml"/>
+                <ResourceDictionary Source="\styles\DatePickerSt.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

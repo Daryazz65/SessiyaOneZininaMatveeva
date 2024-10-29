@@ -15,10 +15,10 @@ namespace SessiyaOneZininaMatveeva.AppData
         /// </summary>
         internal class AuthoriseHelper
         {
-            public static Moderator _selectedModer;
-            public static Organizer _selectedUser;
-            public static Jury _selectedJury;
-            public static Participant _selectedPart;
+            public static Moderator selectedModer;
+            public static Organizer selectedOrg;
+            public static Jury selectedJury;
+            public static Participant selectedPart;
             private static user25Entities _context = App.GetContext();
             /// <summary> 
             /// Авторизует пользователя.
@@ -42,11 +42,11 @@ namespace SessiyaOneZininaMatveeva.AppData
                         {
                             if (login == org.Id.ToString() && password == org.Password)
                             {
-                                _selectedOrg = org;
+                                selectedOrg = org;
                                 return true;
                             }
                         }
-                        if (_selectedOrg == null)
+                        if (selectedOrg == null)
                         {
                             ClassMessageBox.Error("Неправильно введен логин или пароль");
                             return false;
@@ -59,7 +59,7 @@ namespace SessiyaOneZininaMatveeva.AppData
                         {
                             if (login == moderator.Id.ToString() && password == moderator.Password)
                             {
-                                _selectedModer = moderator;
+                                selectedModer = moderator;
                                 return true;
                             }
                             else
@@ -76,7 +76,7 @@ namespace SessiyaOneZininaMatveeva.AppData
                         {
                             if (login == jury.Id.ToString() && password == jury.Email)
                             {
-                                _selectedJury = jury;
+                                selectedJury = jury;
                                 return true;
                             }
                             else
@@ -93,7 +93,7 @@ namespace SessiyaOneZininaMatveeva.AppData
                         {
                             if (login == participant.Id.ToString() && password == participant.Password)
                             {
-                                _selectedPart = participant;
+                                selectedPart = participant;
                                 return true;
                             }
                             else

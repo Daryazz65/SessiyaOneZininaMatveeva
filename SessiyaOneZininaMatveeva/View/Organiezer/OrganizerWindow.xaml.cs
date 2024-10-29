@@ -51,5 +51,28 @@ namespace SessiyaOneZininaMatveeva.View.Organiezer
         {
 
         }
+
+        private void ProfileBtn_Click_1(object sender, RoutedEventArgs e)
+        {
+            ProfileWIndow profileWindow = new ProfileWIndow(_selectedUser);
+            profileWindow.ShowDialog();
+        }
+
+        private void EventsBtn_Click_1(object sender, RoutedEventArgs e)
+        {
+            EventsWindow eventsWindow = new EventsWindow(_selectedUser);
+            eventsWindow.Show();
+            Close();
+        }
+
+        private void ParticipantsBtn_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void JuryBtn_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

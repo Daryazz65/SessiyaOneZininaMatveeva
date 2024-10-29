@@ -1,8 +1,11 @@
-﻿using SessiyaOneZininaMatveeva.Model;
+﻿using SessiyaOneZininaMatveeva.AppData;
+using SessiyaOneZininaMatveeva.Model;
+using SessiyaOneZininaMatveeva.View.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,22 +23,22 @@ namespace SessiyaOneZininaMatveeva.View.Organiezer
     /// </summary>
     public partial class NewEventWindow : Window
     {
-        private Organizer selectedOrganizer;
+        private Organizer _selectedOrganizer;
         static StackPanel stackPanels = new StackPanel() { };
-        private static user25Entities context = App.GetContext();
+        private static user25Entities _context = App.GetContext();
         public NewEventWindow(Organizer selectedOrganizer)
         {
             InitializeComponent();
-            JuryCmb1.ItemsSource = context.Jury.ToList();
+            JuryCmb1.ItemsSource = _context.Jury.ToList();
             JuryCmb1.DisplayMemberPath = "Email";
-            JuryCmb2.ItemsSource = context.Jury.ToList();
+            JuryCmb2.ItemsSource = _context.Jury.ToList();
             JuryCmb2.DisplayMemberPath = "Email";
-            JuryCmb3.ItemsSource = context.Jury.ToList();
+            JuryCmb3.ItemsSource = _context.Jury.ToList();
             JuryCmb3.DisplayMemberPath = "Email";
 
-            CityCmb.ItemsSource = context.City.ToList();
+            CityCmb.ItemsSource = _context.City.ToList();
             CityCmb.DisplayMemberPath = "Name";
-            DirectionCmb.ItemsSource = context.Direction.ToList();
+            DirectionCmb.ItemsSource = _context.Direction.ToList();
             DirectionCmb.DisplayMemberPath = "Name";
         }
 
@@ -47,7 +50,7 @@ namespace SessiyaOneZininaMatveeva.View.Organiezer
             newRow.Children.Add(new ComboBox()
             {
                 Name = "JuryCmb" + stackPanels.Children.Count,
-                ItemsSource = context.Jury.ToList(),
+                ItemsSource = _context.Jury.ToList(),
                 DisplayMemberPath = "Email"
             });
             newRow.Children.Add(new Border() { Height = 20 });
@@ -89,34 +92,126 @@ namespace SessiyaOneZininaMatveeva.View.Organiezer
         }
         private void OkBtn_Click(object sender, RoutedEventArgs e)
         {
-            Event newEvent = new Event()
+            try
             {
-                Name = EventNameTb.Text,
-                Date = (DateTime)EventDateDp.SelectedDate,
-                Direction = DirectionCmb.SelectedItem as Direction
-            };
-            context.Event.Add(newEvent);
+                Event newEvent = new Event()
+                {
+                    Name = EventNameTb.Text,
+                    Date = (DateTime)EventDateDp.SelectedDate,
+                    Direction = DirectionCmb.SelectedItem as Direction,
+                    City = CityCmb.SelectedItem as City,
+                    Days = Convert.ToInt32(DaysTb.Text),
+                    Organizer = _selectedOrganizer
 
-            List<StackPanel> rows = new List<StackPanel>();
-            for (int i = 0; i < JuryGrid.Children.Count; i++)
-            {
-                rows.Add((StackPanel)JuryGrid.Children[i]);
+                };
+                _context.Event.Add(newEvent);
+
+                //Добавление всех строк активностей в массив.
+                List<StackPanel> rows = new List<StackPanel>();
+                for (int i = 0; i < JuryGrid.Children.Count; i++)
+                {
+                    if (i == 0 || i % 2 == 0)
+                    {
+                        rows.Add((StackPanel)JuryGrid.Children[i]);
+                    }
+                }
+                //Формирование Activity из каждой строки.
+                for (int i = 0; i < rows.Count; i++)
+                {
+                    Activity newActivity = new Activity()
+                    {
+                        Name = (rows[i].Children[0] as TextBox).Text,
+                        Jury = (rows[i].Children[2] as ComboBox).SelectedItem as Jury,
+                        Event = newEvent,
+                    };
+                    _context.Activity.Add(newActivity);
+                }
+                _context.SaveChanges();
+                ClassMessageBox.Information("Мероприятие добавлено.");
+                DialogResult = true;
+                Close();
             }
-            //for (int i = 0; i < rows.Count; i++)
-            //{
-            //    if (rows[i].Children.GetType().Equals(Border ///// )
-            //    {
+            catch (InvalidOperationException)
+            {
+                ClassMessageBox.Error("Заполните все поля для ввода.");
+            }
+        }
 
-            //    }
-            //    Activity newActivity = new Activity()
-            //    {
-            //        Name = (rows[i].Children[0] as TextBox).Text,
-            //        Jury = (rows[i].Children[2] as ComboBox).SelectedItem as Jury,
-            //        Event = newEvent
-            //    };
-            //    context.Activity.Add(newActivity);
-            //}
-            context.SaveChanges();
+        private void DaysTb_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextAllowed(e.Text);
+        }
+        private static readonly Regex _regex = new Regex("[^0-9.-]+"); //regex that matches disallowed text
+        private static bool IsTextAllowed(string text)
+        {
+            return !_regex.IsMatch(text);
+        }
+        private void KanbanBtn_Click(object sender, RoutedEventArgs e)
+        {
+            KanbanWindow kanbanWindow = new KanbanWindow();
+            kanbanWindow.ShowDialog();
+        }
+
+        private void AddRowBtn_Click_1(object sender, RoutedEventArgs e)
+        {
+            JuryGrid.Children.Add(AddRow());
+            JuryGrid.Children.Add(new Border() { Height = 20 });
+            UpdateButtons();
+        }
+
+        private void DeleteROwBtn_Click_1(object sender, RoutedEventArgs e)
+        {
+            int lastElementId = JuryGrid.Children.Count - 1;
+            JuryGrid.Children.RemoveAt(lastElementId);
+            JuryGrid.Children.RemoveAt(lastElementId - 1);
+            UpdateButtons();
+        }
+
+        private void OkBtn_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Event newEvent = new Event()
+                {
+                    Name = EventNameTb.Text,
+                    Date = (DateTime)EventDateDp.SelectedDate,
+                    Direction = DirectionCmb.SelectedItem as Direction,
+                    City = CityCmb.SelectedItem as City,
+                    Days = Convert.ToInt32(DaysTb.Text),
+                    Organizer = _selectedOrganizer
+
+                };
+                _context.Event.Add(newEvent);
+
+                //Добавление всех строк активностей в массив.
+                List<StackPanel> rows = new List<StackPanel>();
+                for (int i = 0; i < JuryGrid.Children.Count; i++)
+                {
+                    if (i == 0 || i % 2 == 0)
+                    {
+                        rows.Add((StackPanel)JuryGrid.Children[i]);
+                    }
+                }
+                //Формирование Activity из каждой строки.
+                for (int i = 0; i < rows.Count; i++)
+                {
+                    Activity newActivity = new Activity()
+                    {
+                        Name = (rows[i].Children[0] as TextBox).Text,
+                        Jury = (rows[i].Children[2] as ComboBox).SelectedItem as Jury,
+                        Event = newEvent,
+                    };
+                    _context.Activity.Add(newActivity);
+                }
+                _context.SaveChanges();
+                ClassMessageBox.Information("Мероприятие добавлено.");
+                DialogResult = true;
+                Close();
+            }
+            catch (InvalidOperationException)
+            {
+                ClassMessageBox.Error("Заполните все поля для ввода.");
+            }
         }
     }
 }

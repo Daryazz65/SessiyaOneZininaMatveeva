@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="Добавление мероприятия" SizeToContent="WidthAndHeight" 
         MinHeight="600" WindowStartupLocation="CenterScreen">
-    
     <StackPanel Margin="10">
         <TextBlock Text="Добавить мероприятие"/>
 
@@ -17,6 +16,13 @@
             <TextBlock Text="Начало"/>
             <Border Width="10"/>
             <DatePicker Name="EventDateDp"/>
+            <Border Width="20"/>
+            <TextBlock  Text="Дни"/>
+            <Border Width="10"/>
+            <TextBox Name="DaysTb" PreviewTextInput="DaysTb_PreviewTextInput" 
+                     Width="70"/>
+            <Border Width="50"/>
+            <Button Name="KanbanBtn" Content="Доска" Click="KanbanBtn_Click"/>
         </StackPanel>
 
         <Border Height="10"/>
@@ -79,12 +85,12 @@
 
         <StackPanel Orientation="Horizontal">
             <Border Width="100"/>
-            <Button Name="AddRowBtn" Click="AddRowBtn_Click" 
+            <Button Name="AddRowBtn" Click="AddRowBtn_Click_1"  
                     Content="+" Width="50" />
             <Border Width="100"/>
-            <Button Name="DeleteROwBtn" Click="DeleteROwBtn_Click" 
+            <Button Name="DeleteROwBtn" Click="DeleteROwBtn_Click_1" 
                     Content="-" Width="50" Visibility="Collapsed"/>
-            <Button Name="OkBtn" Click="OkBtn_Click"  Content="Ок" 
+            <Button Name="OkBtn" Click="OkBtn_Click_1" Content="Ок" 
                     HorizontalAlignment="Right" Width="50"/>
         </StackPanel>
     </StackPanel>
