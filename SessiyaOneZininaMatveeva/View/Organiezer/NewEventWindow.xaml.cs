@@ -212,6 +212,7 @@ namespace SessiyaOneZininaMatveeva.View.Organiezer
             {
                 ClassMessageBox.Error("Заполните все поля для ввода.");
             }
+            //stjdfghsdgfh
         }
     }
 }
